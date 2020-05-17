@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  get 'decrypt'
-  root 'decrypt#decrypt'
+  post '/decrypt', to: 'decrypt#decrypt' 
+
+  post 'encrypt', to: 'encrypt#encrypt'
 end
