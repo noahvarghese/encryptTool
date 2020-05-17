@@ -1,0 +1,2 @@
+class EncryptController < ApplicationController
+end
