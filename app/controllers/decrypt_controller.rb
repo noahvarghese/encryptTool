@@ -14,7 +14,7 @@ class DecryptController < ApplicationController
         utf8_iv = file.read
         iv = Base64.decode64(utf8_iv.encode('ascii-8bit'))
 
-        ascii_encryptedString = Base64.decode64(encryptedString.encode(ascii-8bit))
+        ascii_encryptedString = Base64.decode64(encryptedString.encode('ascii-8bit'))
 
 
         # Create intilization vector if does not exists
