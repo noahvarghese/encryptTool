@@ -3,7 +3,7 @@ class DecryptController < ApplicationController
     def decrypt
 
         # Set string to decrypt
-        encryptedString = params[:encryptedString]
+        encrypted_string = params[:encryptedString]
 
         # Start decryption
         decipher = OpenSSL::Cipher::AES256.new :CBC
@@ -14,9 +14,7 @@ class DecryptController < ApplicationController
         utf8_iv = file.read
         iv = Base64.decode64(utf8_iv.encode('ascii-8bit'))
 
-        render plain: iv
-
-        ascii_encryptedString = Base64.decode64(encryptedString.encode('ascii-8bit'))
+        ascii_encrypted_string = Base64.decode64(encrypted_string.encode('ascii-8bit'))
 
 
         # Create intilization vector if does not exists
@@ -35,9 +33,9 @@ class DecryptController < ApplicationController
         file.close
 
         # Decrypt string
-        decyptedString = decipher.update(ascii_encryptedString) + decipher.final
+        decypted_string = decipher.update(ascii_encrypted_string) + decipher.final
         
         # Display string
-        render plain: decyptedString
+        render plain: decypted_string
     end
 end
