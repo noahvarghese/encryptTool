@@ -13,7 +13,9 @@ class DecryptController < ApplicationController
         file = File.open('config/iv.key')
         utf8_iv = file.read
         iv = Base64.decode64(utf8_iv.encode('ascii-8bit'))
-        
+
+        ascii_encryptedString = Base64.decode64(encryptedString.encode(ascii-8bit))
+
 
         # Create intilization vector if does not exists
         if iv.empty?
@@ -31,7 +33,7 @@ class DecryptController < ApplicationController
         file.close
 
         # Decrypt string
-        decyptedString = decipher.update(encryptedString) + decipher.final
+        decyptedString = decipher.update(ascii_encryptedString) + decipher.final
         
         # Display string
         render plain: decyptedString
