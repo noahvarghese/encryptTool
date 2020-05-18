@@ -10,15 +10,16 @@ class EncryptController < ApplicationController
 
         # Checks if initialization vector is set
         file = File.open('config/iv.key')
-        utf8_iv = file.read
-        iv = Base64.decode64(utf8_iv.encode('ascii-8bit'))
+        iv = file.read
 
         # Create intilization vector if does not exists
         if iv.empty?
-            iv = decipher.random_iv
+            iv = cipher.random_iv
             # Save iv for later use
             File.write('config/iv.key', Base64.encode64(iv).encode('utf-8'))
         end
+
+        file.close
 
         # Get key to decrypt string
         file = File.open("config/master.key")
@@ -27,6 +28,6 @@ class EncryptController < ApplicationController
 
         encrypted_string = cipher.update(string) + cipher.final
 
-        render plain: encrypted_string
+        render plain: CGI::escape(Base64.encode64(encrypted_string).encode('utf-8'))
     end
 end
