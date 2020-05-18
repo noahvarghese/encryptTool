@@ -1,8 +1,33 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Welcomes</h1>
-<form method="POST" action="">
-
+<% form_tag({:controller => "welcomes", :action => "crypto"}:method="post")%>
+    <input type="text" name="password" id="password">
+    <select>
+        <option value="encrypt">Encrypt</option>
+        <option value="decrypt">Decrypt</option>
+    </select>
+    <input type="submit" value="Submit">
 </form>
-
-<br>
+<div id="result">
+    <p>Result:</p>
+    <p>
+        <% if @success %>
+            <%= @result %>
+        <% end %>
+    </p>
+</div>
+<div id="resultURLEncoded">
+    <p>Result URL Encoded:
+        <% if @success %>
+            <%= @result_URL_encoded %>
+        <% end %>
+    </p>
+</div>
+<div id="resultURLDecoded">
+    <p>Result URL Decoded:
+        <% if @success %>
+            <%= @result_URL_decoded %>
+        <% end %>
+    </p>
+</div>

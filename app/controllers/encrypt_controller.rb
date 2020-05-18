@@ -26,8 +26,15 @@ class EncryptController < ApplicationController
         cipher.key = file.read
         file.close
 
-        encrypted_string = cipher.update(string) + cipher.final
+        begin
+            encrypted_string = cipher.update(string) + cipher.final
+            URL_encoded = CGI::escape(Base64.encode64(encrypted_string).encode('utf-8'))
+            URL_decoded = CGI::unescapeHTML(URL_encoded)
+            status = { :success => true, :result => encrypted_string, :result_URL_encoded => URL_encoded, :result_URL_decoded => URL_decoded}
+        rescue => exception
+            status = { :success => false }
+        end
 
-        render plain: CGI::escape(Base64.encode64(encrypted_string).encode('utf-8'))
+        render plain: JSON.generate(status)
     end
 end

@@ -4,7 +4,9 @@ class WelcomesController < ApplicationController
   # GET /welcomes
   # GET /welcomes.json
   def index
-    @welcomes = Welcome.all
-    render 
+  end
+
+  def crypto
+    render "index"
   end
 end
