@@ -1,14 +1,9 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Welcomes</h1>
-<% form_tag({:controller => "welcomes", :action => "crypto"}:method="post")%>
-    <input type="text" name="password" id="password">
-    <select>
-        <option value="encrypt">Encrypt</option>
-        <option value="decrypt">Decrypt</option>
-    </select>
-    <input type="submit" value="Submit">
-</form>
+<h1>CryptoTool</h1>
+<%= form_with(url: "/welcomes/crypto", method: "post") do %>
+    <%= text_field_tag( :password ) %>
+    <%= select_tag( :action, options_for_select( [["Encrypt", "encrypt"], ["Decrypt", "decrypt"]], 1 ) ) %>
+    <%= submit_tag("Submit") %>
+<% end %>
 <div id="result">
     <p>Result:</p>
     <p>
@@ -18,14 +13,16 @@
     </p>
 </div>
 <div id="resultURLEncoded">
-    <p>Result URL Encoded:
+    <p>Result URL Encoded:</p>
+    <p>
         <% if @success %>
             <%= @result_URL_encoded %>
         <% end %>
     </p>
 </div>
 <div id="resultURLDecoded">
-    <p>Result URL Decoded:
+    <p>Result URL Decoded:</p>
+    <p>
         <% if @success %>
             <%= @result_URL_decoded %>
         <% end %>

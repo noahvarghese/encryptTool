@@ -27,13 +27,13 @@ class DecryptController < ApplicationController
         begin
             # Decrypt string
             decypted_string = decipher.update(ascii_encrypted_string) + decipher.final
-            URL_encoded = CGI::escape(decypted_string)
-            URL_decoded = CGI::unescapeHTML(URL_encoded)
-            status = { :success => true, :result => decypted_string, :result_URL_encoded => URL_encoded, :result_URL_decoded => URL_decoded }
+            url_encoded = CGI::escape(decypted_string)
+            url_decoded = CGI::unescapeHTML(url_encoded)
+            status = { :success => true, :result => decypted_string, :result_URL_encoded => url_encoded, :result_URL_decoded => url_decoded }
         rescue => exception
             status= { :success => false }
         end
-        
+
         render plain: JSON.generate(status)
     end
 end
