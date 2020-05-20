@@ -34,7 +34,7 @@ class EncryptController < ApplicationController
             url_decoded = CGI::unescapeHTML(url_encoded)
             status = { :success => true, :result => encrypted_string, :result_URL_encoded => url_encoded, :result_URL_decoded => url_decoded}
         rescue => exception
-            status = { :success => false }
+            status = { :success => false, @error => exception.inspect }
         end
         render plain: JSON.generate(status)
     end

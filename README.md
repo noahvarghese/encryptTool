@@ -5,4 +5,4 @@ application up and running.
 
 * Ruby version: 2.7.1
 
-* System dependencies: openssl, rails, cgi, json
+* System dependencies: openssl, rails, cgi, json, net/http
