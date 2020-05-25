@@ -1,9 +1,3 @@
-<h1>CryptoTool</h1>
-<%= form_with(url: "http://localhost:3000", method: "post", remote: false) do |form| %>
-    <%= form.text_field( :password ) %>
-    <%= form.select( :crypt, options_for_select( [["Encrypt", "encrypt"], ["Decrypt", "decrypt"]], 1 ) ) %>
-    <%= form.submit("Submit") %>
-<% end %>
 <div>
     <% if ! @success then %>
         <p><%= @error %></p>
