@@ -1,8 +1,7 @@
 class WelcomesController < ApplicationController
 
-  # GET /welcomes
-  # GET /welcomes.json
   def index
+    
     if params.include?(:password) && params.include?(:crypt)
 
       port = 3000
@@ -25,5 +24,7 @@ class WelcomesController < ApplicationController
         @error = results['error']
       end
     end
+
   end
+
 end

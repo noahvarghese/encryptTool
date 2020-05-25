@@ -1,9 +1,14 @@
 class DecryptController < ApplicationController
+
+    # Turn of csrf check
     skip_before_action :verify_authenticity_token
+
     def decrypt
 
         # Set string to decrypt
-        encrypted_string = CGI::unescapeHTML(params[:string])
+        encrypted_string = CGI::unescape(params[:string])
+
+        puts encrypted_string
 
         # Start decryption
         decipher = OpenSSL::Cipher::AES256.new :CBC
@@ -27,13 +32,14 @@ class DecryptController < ApplicationController
         begin
             # Decrypt string
             decypted_string = decipher.update(ascii_encrypted_string) + decipher.final
-            url_encoded = CGI::escape(decypted_string)
-            url_decoded = CGI::unescapeHTML(url_encoded)
-            status = { :success => true, :result => decypted_string, :result_URL_encoded => url_encoded, :result_URL_decoded => url_decoded }
+            #url_encoded = CGI::escape(decypted_string)
+            #url_decoded = CGI::unescapeHTML(url_encoded)
+            status = { :success => true, :result => decypted_string }
         rescue => exception
             status = { :success => false, :error => exception.inspect }
         end
 
         render plain: JSON.generate(status)
     end
+    
 end

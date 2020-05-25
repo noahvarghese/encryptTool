@@ -37,7 +37,7 @@ class EncryptController < ApplicationController
             encrypted_ascii = cipher.update(string) + cipher.final
             encrypted_string = Base64.encode64(encrypted_ascii).encode('utf-8')
             url_encoded = CGI::escape(encrypted_string)
-            url_decoded = CGI::unescapeHTML(url_encoded)
+            url_decoded = CGI::unescape(url_encoded)
             status = { :success => true, :result => encrypted_string, :result_URL_encoded => url_encoded, :result_URL_decoded => url_decoded}
         rescue => exception
             status = { :success => false, :error => exception.inspect }
