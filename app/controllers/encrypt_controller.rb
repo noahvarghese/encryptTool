@@ -1,7 +1,13 @@
 class EncryptController < ApplicationController
+    before_action :set_headers
     skip_before_action :verify_authenticity_token
 
+    def set_headers
+        response.headers['Content-Type'] = 'application/json'
+    end
+
     def encrypt
+
         string = params[:string]
 
         # Start encryption
@@ -34,8 +40,9 @@ class EncryptController < ApplicationController
             url_decoded = CGI::unescapeHTML(url_encoded)
             status = { :success => true, :result => encrypted_string, :result_URL_encoded => url_encoded, :result_URL_decoded => url_decoded}
         rescue => exception
-            status = { :success => false, @error => exception.inspect }
+            status = { :success => false, :error => exception.inspect }
         end
-        render plain: JSON.generate(status)
+
+        return render json: status
     end
 end

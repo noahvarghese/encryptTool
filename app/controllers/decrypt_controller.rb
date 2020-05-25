@@ -3,7 +3,7 @@ class DecryptController < ApplicationController
     def decrypt
 
         # Set string to decrypt
-        encrypted_string = CGI::unescapeHTML(params[:encryptedString])
+        encrypted_string = CGI::unescapeHTML(params[:string])
 
         # Start decryption
         decipher = OpenSSL::Cipher::AES256.new :CBC
@@ -31,7 +31,7 @@ class DecryptController < ApplicationController
             url_decoded = CGI::unescapeHTML(url_encoded)
             status = { :success => true, :result => decypted_string, :result_URL_encoded => url_encoded, :result_URL_decoded => url_decoded }
         rescue => exception
-            status = { :success => false, @error => exception.inspect }
+            status = { :success => false, :error => exception.inspect }
         end
 
         render plain: JSON.generate(status)

@@ -5,4 +5,8 @@ Rails.application.routes.draw do
   post '/encrypt', to: 'encrypt#encrypt'
 
   get '/', to: 'welcomes#index'
+
+  post '/', to: 'welcomes#index'
+
+  post '/crypto', to: 'welcomes#crypto'
 end
