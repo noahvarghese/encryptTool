@@ -1,8 +1,38 @@
-# README
+<p align="center">
+  <a href="https://www.gatsbyjs.org">
+    <img alt="Noah" src="https://noahvarghese.me/favicon.ico" width="60" />
+  </a>
+</p>
+<h1 align="center">
+  CryptoTool
+</h1>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Secure your development process, and never store your passwords in code.
+Can use either thge php branch, or master (ruby)
 
-* Ruby version: 2.7.1
+## 🚀 Quick start
 
-* System dependencies: openssl, rails, cgi, json, net/http
+1. **Launch Tool**
+
+  Clone repository to web server.
+  
+  ```shell
+  # Make sure this is your web server and the path yoiu will be accessing it from
+  # Or move the contents after download
+  git clone https://github.com/noahvarghese/cryptoTool
+  ```
+  
+1. **Secure Password**
+
+  - Navigate to url pointing to app
+  - Paste in password to be encrypted
+  - Make sure 'encrypt' is selected
+  - Take result url encoded, and paste into config file for your project
+
+1. **Using Encrypted Password**
+ 
+  When going to use the encrypted password
+    - Send post request to tool with params: 
+      - crypt: {encrypt|descrypt}
+      - string: {encryptedString}
+    - Result that comes back will be the decrypted string. continue using
