@@ -8,7 +8,7 @@
 </h1>
 
 Secure your development process, and never store your passwords in code.
-Can use either thge php branch, or master (ruby)
+Can use either the php branch, or master (ruby)
 
 ## 🚀 Quick start
 
