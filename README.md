@@ -32,7 +32,9 @@ Can use either the php branch, or master (ruby)
 1. **Using Encrypted Password**
  
   When going to use the encrypted password
-    - Send post request to tool with params: 
+  
+  - Send post request to tool with params: 
       - crypt: {encrypt|descrypt}
       - string: {encryptedString}
-    - Result that comes back will be the decrypted string. continue using
+      
+  - Result that comes back will be the decrypted string. continue using
