@@ -17,7 +17,7 @@ Can use either the php branch, or master (ruby)
   Clone repository to web server.
   
   ```shell
-  # Make sure this is your web server and the path yoiu will be accessing it from
+  # Make sure this is your web server and the path you will be accessing it from
   # Or move the contents after download
   git clone https://github.com/noahvarghese/cryptoTool
   ```
