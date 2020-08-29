@@ -34,7 +34,7 @@ Can use either the php branch, or master (ruby)
   When going to use the encrypted password
   
   - Send post request to tool with params: 
-      - crypt: {encrypt|descrypt}
+      - crypt: {encrypt|decrypt}
       - string: {encryptedString}
       
   - Result that comes back will be the decrypted string. continue using
