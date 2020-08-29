@@ -22,16 +22,16 @@ Can use either the php branch, or master (ruby)
   git clone https://github.com/noahvarghese/cryptoTool
   ```
   
-1. **Secure Password**
+1. **Secure Password/Key**
 
   - Navigate to url pointing to app
-  - Paste in password to be encrypted
+  - Paste in password/key to be encrypted
   - Make sure 'encrypt' is selected
   - Take result url encoded, and paste into config file for your project
 
 1. **Using Encrypted Password**
  
-  When going to use the encrypted password
+  When going to use the encrypted password/key
   
   - Send post request to tool with params: 
       - crypt: {encrypt|decrypt}
